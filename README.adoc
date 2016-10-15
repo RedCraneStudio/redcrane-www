@@ -1,0 +1,46 @@
+= Redcrane.net
+
+Redcrane.net rewritten in Flask using MongoDB
+
+= Setting up MongoDB
+
+. Download MongoDB
+. (OPTIONAL) Download a MongoDB Client:
+** Robomongo: https://robomongo.org/download
+
+Help for Window's users: https://dzone.com/articles/install-set-and-start-mongodb
+
+The database will automatically be created when you run the server.
+
+= How to run
+
+. Install dependencies using pip (see below)
+. Clone the repository (obviously)
+
+Running in debug mode::
+Use command: `python run.py debug` (or python run.py runserver)
+
+Running in production mode::
+Use command: python run.py prod
+
+= Dependencies
+
+* Flask
+* Mongoengine
+* Flask_mongoengine
+* Flask-Script
+* Flask-Cache
+* Flask-Login
+* bcrypt
+* bbcode
+
+Make sure to check if pip is updated: `pip install --upgrade pip`
+
+= TODO
+. Use markup for README file
+. Test with pypy
+
+= Resources
+Official Website:: http://flask.pocoo.org/
+Tutorials:: http://flask.pocoo.org/docs/0.10/quickstart/#quickstart
+MongoEngine:: http://mongoengine.org/

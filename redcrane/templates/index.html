@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block page_header %}Hi, we’re Red Crane Studio{% endblock %}
+
+{% block content %}
+<video autoplay loop muted id="bgvid">
+    <source src="/static/video/bird.webm" type="video/webm">
+</video>
+
+<div style="overflow:hidden;min-width:80%;max-width:80%;" class="container">
+    <div class="row">
+        <div class="twelve columns">
+            <div style="padding-left:45%;padding-right:45%;margin-bottom:0;" class="panel">
+				<img class="logo" src="/static/images/redcrane_logo.png"></img>
+				<script>
+					$('.logo').attr('draggable', false);
+				</script>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div style="min-width:100%" class="twelve columns">
+            <div class="panel">
+                <h2>
+                    We are a studio based everywhere. That makes games for everyone.
+                </h2>
+                <p id="p01">
+                    We want to craft a video game with great care and love.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="eight columns">
+            <div class="panel" style="min-width:100%;padding-right:20px;border-top-right-radius:0px;border-bottom-right-radius:0px;max-height: 200px;overflow:hidden;">
+                <script>
+                    window.twttr=function(t,e,r){var n,i=t.getElementsByTagName(e)[0],w=window.twttr||{};return t.getElementById(r)?w:(n=t.createElement(e),n.id=r,n.src="https://platform.twitter.com/widgets.js",i.parentNode.insertBefore(n,i),w._e=[],w.ready=function(t){w._e.push(t)},w)}(document,"script","twitter-wjs");
+                </script>
+                <a class="twitter-timeline"
+                    data-widget-id="600720083413962752"
+                    href="https://twitter.com/TwitterDev"
+                    width="100%"
+                    height="200"
+                    data-chrome="nofooter noborders noheader noscrollbar"
+                    data-screen-name="RedCraneStudio">
+                </a>
+            </div>
+        </div>
+        <div class="four columns">
+            <div class="panel" style="max-height: 200px;overflow:hidden;">
+            <div id="recent-posts">
+                <span class="title">RECENT POSTS</span>
+                <br />
+                <span class="recent-posts">
+                {% if posts %}
+                {% for post in posts %}
+                    <a class="recent-post" title="{{ post.created_at.strftime("%I/%d/%Y") }}" href="/blog/post/{{ post.id }}/">
+                        {{ post.title }}
+                    </a>
+                    <br />
+                {% endfor %}
+                {% else %}
+                    There are no blog posts!
+                {% endif %}
+                </span>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

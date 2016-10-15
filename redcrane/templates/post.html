@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/post.css">
+{% endblock %}
+
+{% block page_header %}
+Developer Blog <i class="fa fa-angle-double-right"></i> {{ post.created_at.strftime("%b %d, %Y") }}
+{% endblock %}
+
+{% block content %}
+<div class="post_title">
+    <span id="title">{{ post.title }}</span>
+    <br />
+    <span id="author"> Submitted by {{ post.author }}</span>
+    <br />
+    <span id="date">{{ post.created_at.strftime("%b %d, %Y") }}</span>
+    <hr />
+</div>
+<div class="post_body">
+    {% autoescape off %}
+        {{ post.body | safe }}
+    {% endautoescape %}
+    <br /><br />
+</div>
+
+{% endblock %}

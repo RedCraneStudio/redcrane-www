@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block page_header %}Submit a blog post <i class="fa
+fa-angle-double-right"></i> {{ g.user[0] }} {% endblock %}
+{% block content %}
+<div style="overflow:hidden;min-width:100%;max-width:100%;" class="container">
+<div class="dashboard_container">
+    <div style="min-width:100%;border-radius:0px;" class="panel">
+        {% if error %}
+            {{ error }}
+        {% endif %}
+        {% if is_draft %}
+            <form id="blog_post" method="POST">
+                <input style="min-width: 595px;" type="text" id="title" name="title" maxlength="50" placeholder="Title" value="{{ draft.title }}">
+                <div id="toolbar">
+                    <i class="fa fa-picture-o" onclick="add_tag('image');"></i>
+                    <i class="fa fa-youtube-play" onclick="add_tag('yt');"></i>
+                    <i class="fa fa-bold" onclick="add_tag('bold');"></i>
+                    <i class="fa fa-italic" onclick="add_tag('italic');"></i>
+                    <i class="fa fa-underline" onclick="add_tag('underline');"></i>
+                    <i class="fa fa-link" onclick="add_tag('url');"></i>
+                    <i class="fa fa-code" onclick="add_tag('code');"></i>
+                </div>
+                <textarea placeholder="Body" name="body" form="blog_post" id="body">{{ draft.body }}</textarea>
+                <br />
+                <input type="submit" onclick="alert('Draft saved!')" value="Save edit" formaction="/submit/draft/{{ draft.id }}/">
+                <input type="submit" onclick="alert('Post submitted!')"
+                value="Submit as a blog post" formaction="/submit/post/">
+                <a href="https://en.wikipedia.org/wiki/BBCode">
+                <input type="button" value="Formatting guide">
+                </a>
+            </form>
+        {% elif edit %}
+            <form id="blog_post" method="POST">
+                <input style="min-width: 595px;" type="text" id="title" name="title" maxlength="50" placeholder="Title" value="{{ post.title }}">
+                <div id="toolbar">
+                    <i class="fa fa-picture-o" onclick="add_tag('image');"></i>
+                    <i class="fa fa-youtube-play" onclick="add_tag('yt');"></i>
+                    <i class="fa fa-bold" onclick="add_tag('bold');"></i>
+                    <i class="fa fa-italic" onclick="add_tag('italic');"></i>
+                    <i class="fa fa-underline" onclick="add_tag('underline');"></i>
+                    <i class="fa fa-link" onclick="add_tag('url');"></i>
+                    <i class="fa fa-code" onclick="add_tag('code');"></i>
+                </div>
+                <textarea placeholder="Body" name="body" form="blog_post" id="body">{{ post.body }}</textarea>
+                <br />
+                 <input type="submit" onclick="alert('Post edited!')"
+                 value="Submit edit" formaction="/submit/post/{{ post.id }}/">
+                <a href="https://en.wikipedia.org/wiki/BBCode">
+                <input type="button" value="Formatting guide">
+                </a>
+            </form>
+        {% else %}
+            <form id="blog_post" method="POST">
+                <input style="min-width: 595px;" type="text" id="title" name="title" maxlength="50" placeholder="Title">
+                <div id="toolbar">
+                    <i class="fa fa-picture-o" onclick="add_tag('image');"></i>
+                    <i class="fa fa-youtube-play" onclick="add_tag('yt');"></i>
+                    <i class="fa fa-bold" onclick="add_tag('bold');"></i>
+                    <i class="fa fa-italic" onclick="add_tag('italic');"></i>
+                    <i class="fa fa-underline" onclick="add_tag('underline');"></i>
+                    <i class="fa fa-link" onclick="add_tag('url');"></i>
+                    <i class="fa fa-code" onclick="add_tag('code');"></i>
+                </div>
+                <textarea placeholder="Body" name="body" form="blog_post" id="body"></textarea>
+                <br />
+                <input type="submit" onclick="alert('Post submitted!')"
+                value="Submit as a blog post" formaction="/submit/post/">
+                <a href="https://en.wikipedia.org/wiki/BBCode">
+                <input type="button" value="Formatting guide">
+                </a>
+                <br />
+                <input type="submit" onclick="alert('Draft saved!')" value="Save as a draft to edit in the future" formaction="/submit/draft/">
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

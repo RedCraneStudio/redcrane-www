@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_header %}Hi, we’re Red Crane Studio{% endblock %}
+
+{% block content %}
+
+<div style="overflow:hidden;min-width:80%;max-width:80%;" class="container">
+    <div class="row">
+    <div style="min-width:100%" class="twelve columns">
+        <h1 style="color:white;">Login</h1>
+        <h3 style="color:gray;">Press enter to login.</h3>
+        <div id="login" style="border-radius:0px;" class="panel">
+            <form action="/auth/" method="POST">
+                <input type="text" id="username" name="username" maxlength="64" placeholder="Username">
+                <input title="Your password should look something like: ⬤⬤⬤⬤⬤⬤." type="password" id="password" name="password" maxlength="64" placeholder="Password">
+                <input style="display:none;" type="submit" id="submit" name="submit">
+            </form>
+            {% if login_err %}
+                <script>$('#login').slideToggle();</script>
+                <p style="font-size:13px;color:red;">Error logging in: {{ login_err }}</p>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

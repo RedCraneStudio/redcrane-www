@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block page_header %}Developer Blog{% endblock %}
+
+{% block content %}
+<!--<div id="search_bar">
+    <form action="/blog/search" style="overflow:visible;" method="GET">
+        <input type="search" placeholder="search" name="q">
+    </form>
+</div>-->
+<div style="overflow:hidden;min-width:100%;max-width:100%;" class="container">
+    <div class="row">
+        <div class="twelve columns">
+            <!-- SUBMIT BUTTON -->
+            {% if current_user.is_authenticated %}
+                <div id="submit-button">
+                    <a href="/submit">
+                    <div class="post" style="font-size:12px;background:rgba(20,20,20,0.5);color:gray;padding-bottom:0px;padding-top:0px;">
+                        <h3>Submit new blog entry</h3>
+                    </div>
+                    </a>
+                </div>
+            {% endif %}
+
+            <!-- POSTS -->
+            {% if search_results %}
+            <p style="text-indent:80px;color:white;">Search results for "{{ query }}"</p>
+                {% for post in search_results %}
+                <a class="post" href="/blog/post/{{ post.id }}">
+                    <div class="title">
+                        {{ post.title }}
+                    </div>
+                    <div class="date">
+                        {{ post.created_at.strftime("%b %d, %Y") }}
+                    </div>
+                    <div class="author">
+                        <p>SUBMITTED BY {{ post.author }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            {% endif %}
+
+            {% if current_user.is_authenticated %}
+                {% for post in posts.items %}
+                <a class="post" onclick="$('#post-controls-{{ post.id }}').slideToggle();">
+                    <div class="title">
+                        {{ post.title }}
+                    </div>
+                    <div class="date">
+                        {{ post.created_at.strftime("%b %d, %Y") }}
+                    </div>
+                    <div class="author">
+                        <p>SUBMITTED BY {{ post.author }}</p>
+                    </div>
+                </a>
+
+                <div id="post-controls-{{ post.id }}" class="post-controls">
+                    <a class="control" href="/blog/post/{{ post.id }}">
+                        <i class="fa fa-eye"></i>
+                        | View
+                    </a>
+                    <br />
+                    <a class="control" href="/blog/post/edit/{{ post.id }}">
+                        <i class="fa fa-pencil"></i>
+                        | Edit
+                    </a>
+                    <br />
+                    <a class="control" href="/blog/post/remove/{{ post.id }}">
+                        <i class="fa fa-trash"></i>
+                        | Remove
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                {% for post in posts.items %}
+                <a href="/blog/post/{{ post.id }}">
+                    <div class="post">
+                        <div class="title">
+                            {{ post.title }}
+                        </div>
+                        <div class="date">
+                            {{ post.created_at.strftime("%b %d, %Y") }}
+                        </div>
+                        <div class="author">
+                            <p>SUBMITTED BY {{ post.author }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            {% endif %}
+
+            <!-- DRAFTS -->
+            {% if current_user.is_authenticated %}
+            {% if drafts %}
+                {% for draft in drafts %}
+                <a class="draft" onclick="$('#draft-controls-{{ draft.id }}').slideToggle();">
+                    <div class="title">
+                        <div class="subtitle">DRAFT</div>
+                        {{ draft.title }}
+                    </div>
+                    <div class="date">
+                        Created {{ draft.created_at.strftime("%b %d, %Y") }}
+                    </div>
+                </a>
+
+                <div id="draft-controls-{{ draft.id }}" class="draft-controls">
+                    <a class="control" href="/blog/draft/edit/{{ draft.id }}">
+                        <i class="fa fa-pencil"></i>
+                        | Edit
+                    </a>
+                    <br />
+                    <a class="control" href="/blog/draft/remove/{{ draft.id }}">
+                        <i class="fa fa-trash"></i>
+                        | Remove
+                    </a>
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% endif %}
+
+            <!-- PAGINATION BUTTONS -->
+            <div class="pagination_buttons">
+                {% if posts.page > 1 %}
+                <a href="/blog/{{ posts.page - 1 }}">
+                    <div id="backward">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </div>
+                </a>
+                {% endif %}
+                {% if posts.page < posts.pages %}
+                <a href="/blog/{{ posts.page + 1 }}">
+                    <div id="forward">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </div>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}

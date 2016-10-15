@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block page_header %}The Red Crane Team{% endblock %}
+{% block content %}
+<ul>
+    <div style="overflow:hidden;min-width:100%;max-width:100%;" class="container">
+        <div class="row">
+            <div style="padding-bottom:35%;" class="about">
+                <div class="one-third column">
+                    <img id="avatar1" src="/static/images/staff/luke.jpg"></img>
+                    <br />
+                    <span>Luke San Antonio - Bialecki</span>
+                    <br />
+                    <small>Engine developer</small>
+                </div>
+                <div class="one-third column">
+                    <img id="avatar2" src="/static/images/staff/henry.jpg"></img>
+                    <br />
+                    <span>Henry Ryhänen</span>
+                    <br />
+                    <small>3D Modeler</small>
+                </div>
+                <div class="one-third column">
+                    <img id="avatar5" src="/static/images/avatars/unknown.png"></img>
+                    <br />
+                    <span>Graham Reinbold</span>
+                    <br />
+                    <small>Writer</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div style="padding-bottom:35%;" class="about">
+                <div class="one-half column">
+                    <img id="avatar3" src="/static/images/staff/hazza.jpg"></img>
+                    <br />
+                    <span>Hazza Alkaabi</span>
+                    <br />
+                    <small>Engine/Web Developer and PR</small>
+                </div>
+                <div class="one-half column">
+                    <img id="avatar4" src="/static/images/staff/null.jpg"></img>
+                    <br />
+                    <span>Nicholas Love</span>
+                    <br />
+                    <small>Web Developer/Graphics</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>
+
+<script>
+    $('#avatar1').attr('draggable', false);
+    $('#avatar2').attr('draggable', false);
+    $('#avatar3').attr('draggable', false);
+    $('#avatar4').attr('draggable', false);
+    $('#avatar5').attr('draggable', false);
+</script>
+{% endblock %}
