@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from flask import Flask, Blueprint, render_template
 from flask.ext.script import Manager, Server
 from flask.ext.mongoengine import MongoEngine
@@ -7,11 +9,11 @@ from flask.ext.login import LoginManager
 # The website requires a secret key! 
 # Please place this key in a "secret.key" file in the root folder.
 with open('secret.key', 'r') as SECRET_KEY:
-	SECRET_KEY = SECRET_KEY.read()
+    SECRET_KEY = SECRET_KEY.read()
 
 app = Flask(__name__)
 app.config['MONGODB_SETTINGS'] = {
-	'db':'redcrane'
+    'db':'redcrane'
 }
 app.config['SECRET_KEY'] = SECRET_KEY
 
@@ -38,18 +40,18 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-	return models.User.objects(id=user_id)
+    return models.User.objects(id=user_id)
 
 # Manager
 
 manager = Manager(app)
 
 manager.add_command('debug', Server(
-	use_debugger = True, use_reloader = True,
-	host = '127.0.0.1', port = 5000 ))
+    use_debugger = True, use_reloader = True,
+    host = '127.0.0.1', port = 5000 ))
 manager.add_command('prod', Server(
-		use_debugger = False, use_reloader = False,
-		host = '0.0.0.0', port = 5000 ))
+        use_debugger = False, use_reloader = False,
+        host = '0.0.0.0', port = 5000 ))
 
 # Error Handlers
 
@@ -70,4 +72,4 @@ def method_not_allowed(error):
     return render_template('error.html', error=error), 405
 
 if __name__ == '__main__':
-	manager.run()
+    manager.run()

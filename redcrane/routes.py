@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+
 from flask import Flask, Blueprint, render_template, redirect, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
+import bbcode, bcrypt, base64, re
+
 from models import Post, User, Draft
 from app import app, cache
-import bbcode, bcrypt, base64, re
 
 # PREFIXES --------------------------------------->
 # view_ = base view

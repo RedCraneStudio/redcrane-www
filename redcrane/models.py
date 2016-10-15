@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 import datetime
-from app import db
 import hashlib, bcrypt, os
+
+from app import db
 
 class IsAuthenticated(db.QuerySet):
     def is_authenticated(): return True

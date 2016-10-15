@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import redcrane.app, getpass
 from redcrane.models import User
 
