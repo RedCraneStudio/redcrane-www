@@ -38,8 +38,35 @@ code {
     margin-bottom: 1em;
     word-wrap: break-word;
 }
+.post_body .img-wrapper {
+    display: inline-block;
+
+    height: auto;
+    max-width: 400px;
+    overflow: hidden;
+    width: auto;
+}
 .post_body img {
     max-width: 400px;
+    
+    transform:scale(1);
+    -ms-transform:scale(1); /* IE 9 */
+    -moz-transform:scale(1); /* Firefox */
+    -webkit-transform:scale(1); /* Safari and Chrome */
+    -o-transform:scale(1); /* Opera */
+
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.post_body img:hover {
+    transform:scale(1.5);
+    -ms-transform:scale(1.5); /* IE 9 */
+    -moz-transform:scale(1.5); /* Firefox */
+    -webkit-transform:scale(1.5); /* Safari and Chrome */
+    -o-transform:scale(1.5); /* Opera */
+
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
 }
 .post_body img:not(:first-child) {
 	width: 100%;

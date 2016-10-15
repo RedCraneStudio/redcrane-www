@@ -14,7 +14,7 @@ from app import app, cache
 
 url = Blueprint('url', __name__)
 parser = bbcode.Parser(replace_links=False)
-parser.add_simple_formatter('img', '<img src="%(value)s"></img>')
+parser.add_simple_formatter('img', '<div class="img-wrapper"><img src="%(value)s"></img></div>')
 parser.add_simple_formatter('yt', '<iframe width="560" height="315" src="https://www.youtube.com/embed/%(value)s" frameborder="1" allowfullscreen></iframe>')
 
 # REQUEST HANDLERS  ------------------------------>

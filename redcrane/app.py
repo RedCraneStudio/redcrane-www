@@ -20,7 +20,6 @@ app.config['SECRET_KEY'] = SECRET_KEY
 # Database
 
 db = MongoEngine(app)
-
 import models
 
 # Caching
@@ -70,6 +69,8 @@ def internal_server_error(error):
 @app.errorhandler(405)
 def method_not_allowed(error):
     return render_template('error.html', error=error), 405
+
+# Main loop
 
 if __name__ == '__main__':
     manager.run()
