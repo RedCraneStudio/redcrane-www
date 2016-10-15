@@ -36,10 +36,6 @@ Use command: python run.py prod
 
 Make sure to check if pip is updated: `pip install --upgrade pip`
 
-= TODO
-. Use markup for README file
-. Test with pypy
-
 = Resources
 Official Website:: http://flask.pocoo.org/
 Tutorials:: http://flask.pocoo.org/docs/0.10/quickstart/#quickstart
